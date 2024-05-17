@@ -14,7 +14,6 @@
 #
 # This script was generated from shunk031/cookiecutter-huggingface-datasets.
 #
-# TODO: Address all TODOs and remove all explanatory comments
 import json
 import os
 import re
