@@ -118,52 +118,58 @@ An example of the JDocQA dataset (training set) looks as follows:
 ```json
 {
     "answer": "本文中に記載がありません",
-    "answer_type": "4",
-    "context": "_II.調査内容(2.虹本マニュアルの策定)(3)基本マニュアルの記載項目前述の方針等を踏まえ、基本マニュアルの具体的な記載項目(目次だて)は以下のとおりとする。小項目・内容Iはじめにマニュアルの目的、立会義務_(消防法第13条第3項)安全対策の基 本事項(SS立会い者とローリー乗務員による相互確認・相互協力の重要性)ローリー荷卸しの手順の基本的流れ ※詳細版のみIIローリー荷邊し時の作業内容1ローリー到着時(荷爺し前)1.ローリー停車位置の確認:計導2.納品書の相互確認3.アースの接続4.消火器の配置5.積荷 の相互確認6.地下タンク和在庫及び和荷卸し数量の確認7・詳細版には、各項目ごとに、_-SS立会い者、ローリー乗務2荷邊し時(ホースの結合)03-.注油口の確認、ホースの結合を記載3.ベーパー回収ホース接続ee4荷卸し作業中の安全馬視特に重要な基本事3荷卸し終了時1. 配管内、ホース内の残油の確認2.注油口の確認ハッチ内残油確認3.在庫確認4.5.後片付け6.ローリーの退出自事故・災害時の対処(初動対応)1コンタミ(混油)事故発見時(緊急処置)、連絡2オーバーフロー(漏油)事故発見時(緊急処置)、連絡3火災発見時(緊急処置)、初期消火IV通報・緊急連絡緊急時連絡先、通報内容参考チェックリスト例",
-    "multiple_select_answer": "D",
-    "multiple_select_question": "(A)はい、(B)いいえ、(C)わからない、(D)本文中に記載が見つけられませんでした",
-    "no_reason": "0",
+    "answer_type": 3,
+    "context": "_II.調査内容(2.虹本マニュアルの策定)(3)基本マニュアルの記載項目前述の方針等を踏まえ、基本マニュアルの具体的な記載項目(目次だて)は以下のとおりとする。小項目・内容Iはじめにマニュアルの目的、立会義務_(消防法第13条第3項)安全対策の基本事項(SS立会い者とローリー乗務員による相互確認・相互協力の重要性)ローリー荷卸しの手順の基本的流れ ※詳細版のみIIローリー荷邊し時の作業内容1ローリー到着時(荷爺し前)1.ローリー停車位置の確認:計導2.納品書の相互確認3.アースの接続4.消火器の配置5.積荷の相互確認6.地下タンク和在庫及び和荷卸し数量の確認7・詳細版には、各項目ごとに、_-SS立会い者、ローリー乗務2荷邊し時(ホースの結合)03-.注油口の確認、ホースの結合を記載3.ベーパー回収ホース接続ee4荷卸し作業中の安全馬視特に重要な基本事3荷卸し終了時1.配管内、ホース内の残油の確認2.注油口の確認ハッチ内残油確認3.在庫確認4.5.後片付け6.ローリーの退出自事故・災害時の対処(初動対応)1コンタミ(混油)事故発見時(緊急処置)、連絡2オーバーフロー(漏油)事故発見時(緊急処置)、連絡3火災発見時(緊急処置)、初期消火IV通報・緊急連絡緊急時連絡先、通報内容参考チェックリスト例",
+    "multiple_select_answer": 3,
+    "multiple_select_question": ["はい", "いいえ", "わからない", "本文中に記載が見つけられませんでした"],
+    "no_reason": 0,
     "normalized_answer": "本文中に記載がありません",
     "original_answer": "本文中に記載が見つけられませんでした",
-    "original_context": "_II.調査内容(2.虹本マニュアルの策定)(3)基本マニュアルの記載項目前述の方針等を踏まえ、基本マニュアルの具体的な記載項目(目次だて)は以下のとおりとする。小項目・内容Iはじめにマニュアルの目的、立会義務_(消防法第13条第3項)安全対策の基本事項(SS立会い者とローリー乗務員による相互確認・相互協力の重要性)ローリー荷卸しの手順の基本的流れ ※詳細版のみIIローリー荷邊し時の作業内容1ローリー到着時(荷爺し前)1.ローリー停車位置の確認:計導2.納品書の相互確認3.アースの接続4.消火器の配 置5.積荷の相互確認6.地下タンク和在庫及び和荷卸し数量の確認7・詳細版には、各項目ごとに、_-SS立会い者、ローリー乗務2荷邊し時(ホースの結合)03-.注油口の確認、ホースの結合を記載3.ベーパー回収ホース接続ee4荷卸し作業中の安全馬視特に重要な基本事3荷卸し 終了時1.配管内、ホース内の残油の確認2.注油口の確認ハッチ内残油確認3.在庫確認4.5.後片付け6.ローリーの退出自事故・災害時の対処(初動対応)1コンタミ(混油)事故発見時(緊急処置)、連絡2オーバーフロー(漏油)事故発見時(緊急処置)、連絡3火災発見時(緊急処置)、初期消火IV通報・緊急連絡緊急時連絡先、通報内容参考チェックリスト例",
+    "original_context": "_II.調査内容(2.虹本マニュアルの策定)(3)基本マニュアルの記載項目前述の方針等を踏まえ、基本マニュアルの具体的な記載項目(目次だて)は以下のとおりとする。小項目・内容Iはじめにマニュアルの目的、立会義務_(消防法第13条第3項)安全対策の基本事項(SS立会い者とローリー乗務員による相互確認・相互協力の重要性)ローリー荷卸しの手順の基本的流れ ※詳細版のみIIローリー荷邊し時の作業内容1ローリー到着時(荷爺し前)1.ローリー停車位置の確認:計導2.納品書の相互確認3.アースの接続4.消火器の配置5.積荷の相互確認6.地下タンク和在庫及び和荷卸し数量の確認7・詳細版には、各項目ごとに、_-SS立会い者、ローリー乗務2荷邊し時(ホースの結合)03-.注油口の確認、ホースの結合を記載3.ベーパー回収ホース接続ee4荷卸し作業中の安全馬視特に重要な基本事3 荷卸し終了時1.配管内、ホース内の残油の確認2.注油口の確認ハッチ内残油確認3.在庫確認4.5.後片付け6.ローリーの退出自事故・災害時の対処(初動対応)1コンタミ(混油)事故発見時(緊急処置)、連絡2オーバーフロー(漏油)事故発見時(緊急処置)、連絡3火災発見時(緊急処置)、初期消火IV通報・緊急連絡緊急時連絡先、通報内容参考チェックリスト例",
     "original_question": "基本マニュアルの具体的な記載項目としている事故・災害時の対処の中で、オーバーフロー（漏油）事故が起こった場合は発見時にどのような処置が求められますか？",
-    "pdf_category": "Slide",
+    "pdf_category": 2,
     "pdf_name": "public_document00152.pdf",
     "question": "基本マニュアルの具体的な記載項目としている事故・災害時の対処の中で、オーバーフロー（漏油）事故が起こった場合は発見時にどのような処置が求められますか？\n解答は自由に記述してください。",
-    "question_number": "4-656-1-4",
+    "question_number": [4, 656, 1, 4],
     "question_page_number": "9",
-    "reason_of_answer_bbox": "",
-    "text_from_ocr_pdf": "_II.調査内容(2.虹本マニュアルの策定)(3)基本マニュアルの記載項目前述の方針等を踏まえ、基本マニュアルの具体的な記載項目(目次だて)は以下のとおりとする。小項目・内容Iはじめにマニュアルの目的、立会義務_(消防法第13条第3項)安 全対策の基本事項(SS立会い者とローリー乗務員による相互確認・相互協力の重要性)ローリー荷卸しの手順の基本的流れ ※詳細版のみIIローリー荷邊し時の作業内容1ローリー到着時(荷爺し前)1.ローリー停車位置の確認:計導2.納品書の相互確認3.アースの接続4.消火器の 配置5.積荷の相互確認6.地下タンク和在庫及び和荷卸し数量の確認7・詳細版には、各項目ごとに、_-SS立会い者、ローリー乗務2荷邊し時(ホースの結合)03-.注油口の確認、ホースの結合を記載3.ベーパー回収ホース接続ee4荷卸し作業中の安全馬視特に重要な基本事3荷卸 し終了時1.配管内、ホース内の残油の確認2.注油口の確認ハッチ内残油確認3.在庫確認4.5.後片付け6.ローリーの退出自事故・災害時の対処(初動対応)1コンタミ(混油)事故発見時(緊急処置)、連絡2オーバーフロー(漏油)事故発見時(緊急処置)、連絡3火災発見時(緊急処置)、初期消火IV通報・緊急連絡緊急時連絡先、通報内容参考チェックリスト例",
+    "reason_of_answer_bbox": [""],
+    "text_from_ocr_pdf": "_II.調査内容(2.虹本マニュアルの策定)(3)基本マニュアルの記載項目前述の方針等を踏まえ、基本マニュアルの具体的な記載項目(目次だて)は以下のとおりとする。小項目・内容Iはじめにマニュアルの目的、立会義務_(消防法第13条第3項)安全対策の基本事項(SS立会い者とローリー乗務員による相互確認・相互協力の重要性)ローリー荷卸しの手順の基本的流れ ※詳細版のみIIローリー荷邊し時の作業内容1ローリー到着時(荷爺し前)1.ローリー停車位置の確認:計導2.納品書の相互確認3.アースの接続4.消火器の配置5.積荷の相互確認6.地下タンク和在庫及び和荷卸し数量の確認7・詳細版には、各項目ごとに、_-SS立会い者、ローリー乗務2荷邊し時(ホースの結合)03-.注油口の確認、ホースの結合を記載3.ベーパー回収ホース接続ee4荷卸し作業中の安全馬視特に重要な基本事3荷卸し終了時1.配管内、ホース内の残油の確認2.注油口の確認ハッチ内残油確認3.在庫確認4.5.後片付け6.ローリーの退出自事故・災害時の対処(初動対応)1コンタミ(混油)事故発見時(緊急処置)、連絡2オーバーフロー(漏油)事故発見時(緊急処置)、連絡3火災発見時(緊急処置)、初期消火IV通報・緊急連絡緊急時連絡先、通報内容参考チェックリスト例",
     "text_from_pdf": "",
-    "type_of_image": "",
-    "pdf_filepath": "/home/shunk031/.cache/huggingface/datasets/downloads/extracted/f3481b9f65c75efec1e5398f76bd8347e64661573961b69423568699f1d7083a/pdf_files/public_document00152.pdf"
+    "type_of_image": [0],
+    "pdf_filepath": "/Users/jp31315/.cache/huggingface/datasets/downloads/extracted/f3481b9f65c75efec1e5398f76bd8347e64661573961b69423568699f1d7083a/pdf_files/public_document00152.pdf"
 }
 ```
 
 ### Data Fields
 
-[More Information Needed]
+From [JDocQA's README.md](https://github.com/mizuumi/JDocQA/blob/main/dataset/README.md) and the paper:
 
-<!-- List and describe the fields present in the dataset. Mention their data type, and whether they are used as input or output in any of the tasks the dataset currently supports. If the data has span indices, describe their attributes, such as whether they are at the character level or word level, whether they are contiguous or not, etc. If the datasets contains example IDs, state whether they have an inherent meaning, such as a mapping to other datasets or pointing to relationships between data points.
-
-- `example_field`: description of `example_field`
-
-Note that the descriptions can be initialized with the **Show Markdown Data Fields** output of the [Datasets Tagging app](https://huggingface.co/spaces/huggingface/datasets-tagging), you will then only need to refine the generated descriptions. -->
+- `answer`: 
+- `answer_type`: (1) Yes/No questions, (2) Factoid questions, (3) Numerical questions, (4) Open-ended questions.
+- `context`: Removed noises from 'original_context'.
+- `multiple_select_answer`:
+- `multiple_select_question`:
+- `no_reason`: Unanswerable question-> 0, Answerable question-> 1
+- `normalized_answer`:
+- `original_answer`: Annotated answers.
+- `original_context`: Extracted texts from PDF.
+- `original_question`: Annotated questions.
+- `pdf_category`: Document category.
+- `pdf_name`: PDF name.
+- `question`: Question query for models.
+- `question_number`:
+- `question_page_number`: Where annotators found answer of the questions.
+- `reason_of_answer_bbox`:
+- `text_from_ocr_pdf`:
+- `text_from_pdf`:
+- `type_of_image`:
+- `pdf_filepath`:
 
 ### Data Splits
 
-[More Information Needed]
+From [JDocQA's paper](https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/C3-5.pdf):
 
-<!-- Describe and name the splits in the dataset if there are more than one.
-
-Describe any criteria for splitting the data, if used. If there are differences between the splits (e.g. if the training annotations are machine-generated and the dev and test ones are created by humans, or if different numbers of annotators contributed to each example), describe them here.
-
-Provide the sizes of each split. As appropriate, provide any descriptive statistics for the features, such as average length.  For example:
-
-|                         | train | validation | test |
-|-------------------------|------:|-----------:|-----:|
-| Input Sentences         |       |            |      |
-| Average Sentence Length |       |            |      | -->
+> 学習，検定，テストセットにそれぞれ 9,290 件，1,134 件，1,176 件の質問応答が含まれるようにデータセット全体を分割した．同一 PDF ファイルは必ず同一の分割に出現する．
 
 ## Dataset Creation
 
@@ -279,22 +285,21 @@ If analyses have been run quantifying these biases, please add brief summaries a
 
 ### Citation Information
 
-<!-- Provide the [BibTex](http://www.bibtex.org/)-formatted reference for the dataset. For example:
-```
-@article{article_id,
-  author    = {Author List},
-  title     = {Dataset Paper Title},
-  journal   = {Publication Venue},
-  year      = {2525}
-}
-```
-
-If the dataset has a [DOI](https://www.doi.org/), please provide it here. -->
-
 ```bibtex
-TODO: Add BibTeX citation here
+@inproceedings{JDocQA_2024,
+    title = "JDocQA: Japanese Document Question Answering Dataset for Generative Language Models",
+    author = "Onami, Eri  and
+      Kurita, Shuhei  and
+      Miyanishi, Taiki and
+      Watanabe, Taro",
+    booktitle = "The 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation",
+    month = may,
+    year = "2024",
+    address = "Trino, Italy",
+    abstract = "Document question answering is a task of question answering on given documents such as reports, slides, pamphlets, and websites, and it is a truly demanding task as paper and electronic forms of documents are so common in our society. This is known as a quite challenging task because it requires not only text understanding but also understanding of figures and tables, and hence visual question answering (VQA) methods are often examined in addition to textual approaches. We introduce Japanese Document Question Answering (JDocQA), a large-scale document-based QA dataset, essentially requiring both visual and textual information to answer questions, which comprises 5,504 documents in PDF format and annotated 11,600 question-and-answer instances in Japanese. Each QA instance includes references to the document pages and bounding boxes for the answer clues. We incorporate multiple categories of questions and unanswerable questions from the document for realistic question-answering applications. We empirically evaluate the effectiveness of our dataset with text-based large language models (LLMs) and multimodal models. Incorporating unanswerable questions in finetuning may contribute to harnessing the so-called hallucination generation.",
+}
 ```
 
 ### Contributions
 
-<!-- TODO: Thanks to [@github-username](https://github.com/<github-username>) for adding this dataset. -->
+Thanks to [@mizuumi](https://github.com/mizuumi) for creating this dataset.
