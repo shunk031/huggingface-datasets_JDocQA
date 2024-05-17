@@ -142,7 +142,7 @@ An example of the JDocQA dataset (training set) looks as follows:
 
 ### Data Fields
 
-From [JDocQA's README.md](https://github.com/mizuumi/JDocQA/blob/main/dataset/README.md) and the paper:
+From [JDocQA's README.md](https://github.com/mizuumi/JDocQA/blob/main/dataset/README.md) and [the paper](https://arxiv.org/abs/2403.19454):
 
 - `answer`: 
 - `answer_type`: (1) Yes/No questions, (2) Factoid questions, (3) Numerical questions, (4) Open-ended questions.
@@ -162,8 +162,8 @@ From [JDocQA's README.md](https://github.com/mizuumi/JDocQA/blob/main/dataset/RE
 - `reason_of_answer_bbox`:
 - `text_from_ocr_pdf`:
 - `text_from_pdf`:
-- `type_of_image`:
-- `pdf_filepath`:
+- `type_of_image`: (1) Table, (2) Bar chart, (3) Line chart, (4) Pie chart, (5) Map, (6) Other figures, (7) Mixtured writing style from left to the right and from upside to the downside, (8) Drawings, (9) Others.
+- `pdf_filepath`: full file path to the corresponding PDF file.
 
 ### Data Splits
 
@@ -175,61 +175,45 @@ From [JDocQA's paper](https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_di
 
 ### Curation Rationale
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- What need motivated the creation of this dataset? What are some of the reasons underlying the major choices involved in putting it together? -->
+> To address the demand for a large-scale and fully annotated Japanese document question answering dataset, we introduce a JDocQA dataset by collecting Japanese documents in PDF styles from open-access sources including multiple formats of documents: slides, reports, websites and pamphlets and manually annotating question-answer pairs on them.
 
 ### Source Data
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- This section describes the source data (e.g. news text and headlines, social media posts, translated sentences,...) -->
+> We gather public documents, such as, municipality pamphlets and websites, that are created by Japanese governmental agencies or local governments. 
 
 #### Initial Data Collection and Normalization
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- Describe the data collection process. Describe any criteria for data selection or filtering. List any key words or search terms used. If possible, include runtime information for the collection process.
+> We manually collected PDF documents from open-access resources such as Japanese National Diet Library (NDL)’s digital collection, web archive projects (WARP) and websites of Japanese government ministries. We manually gathered documents such as reports, pamphlets or websites that are published by public or quasi-public sectors, such as local governments or public universities through WARP. We also gather Japanese ministry documents such as slides and reports from their websites following the government agencies’ policies. Those documents cover a wide range of topics, for instance, economic policies, education policies, labor issues, health and hygiene, agriculture, forestry, fisheries, culture and arts, history, related to governmental policy or policy guidelines, as well as the everyday affairs of local governments. These documents also include visual elements such as figures, tables, charts, pictures, or mandala charts, complex figures with a combination of texts and objects typically seen in the Japanese public administrative sector’s official document. We classify these documents into four categories, namely, pamphlet, slide, report, and website considering the form of the documents.
 
-If data was collected from other pre-existing datasets, link to source here and to their [Hugging Face version](https://huggingface.co/datasets/dataset_name).
-
-If the data was modified or normalized after being collected (e.g. if the data is word-tokenized), describe the process and the tools used. -->
+> We extracted texts from PDF documents with PyPDF2. We also notice that some PDF documents are probably created from paper scans, and we cannot extract embedded texts from such documents. Therefore, we extracted texts from the document page images by OCR (Optical Character Recognition) as an alternative source. After the text extraction or OCR, we removed mistakenly recognized symbols and emojis, or duplicated characters from texts when the same character continuously and repeatedly appeared more than five times.
 
 #### Who are the source language producers?
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- State whether the data was produced by humans or machine generated. Describe the people or systems who originally created the data.
-
-If available, include self-reported demographic or identity information for the source data creators, but avoid inferring this information. Instead state that this information is unknown. See [Larson 2017](https://www.aclweb.org/anthology/W17-1601.pdf) for using identity categories as a variables, particularly gender.
-
-Describe the conditions under which the data was created (for example, if the producers were crowdworkers, state what platform was used, or if the data was found, what website the data was found on). If compensation was provided, include that information here.
-
-Describe other people represented or mentioned in the data. Where possible, link to references for the information. -->
+> JDocQA dataset comprises 5,504 files and 11,600 question-and-answer pairs in Japanese.
 
 ### Annotations
 
-[More Information Needed]
-
-<!-- If the dataset contains annotations which are not part of the initial data collection, describe them in the following paragraphs. -->
-
 #### Annotation process
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- If applicable, describe the annotation process and any tools used, or state otherwise. Describe the amount of data annotated, if not all. Describe or reference annotation guidelines provided to the annotators. If available, provide interannotator statistics. Describe any annotation validation processes. -->
+> As documents include rich textual and visual elements (e.g., graphs, charts, maps, illustrations, and a mix of vertical and horizontal written text), we made question answer pairs that are related to both textual and visual information. We ask annotators to write up two to four question-answer annotations in each document. We also ask not to use any AI-tools such as OpenAI ChatGPT during the annotation process. Each question is accompanied with the supporting facts as marked in red in Figure 1 and Figure 3. We classify a subset of questions that have multiple supporting facts in multiple pages as multi-page questions. Multi-page questions are considerably difficult from their single-page counterparts. For unanswerable questions, we ask annotators to write questions that lack supporting facts in the documents, making them impossible to answer based on the given documents.
+
+> We prepared three types of images for visual inputs for multimodal models. The first type of images are those of the whole page of the documents including the annotated question answering pairs. The second type of images are those cropped by bounding boxes on which annotators based their answers such as tables or figures of the pages. When multiple bounding boxes are annotated to a single question-answer pair, multiple cropped images are combined together into a single image here. The third type of images are blank (white) images that are used for ablation studies.
 
 #### Who are the annotators?
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- If annotations were collected for the source data (such as class labels or syntactic parses), state whether the annotations were produced by humans or machine generated.
-
-Describe the people or systems who originally created the annotations and their selection criteria if applicable.
-
-If available, include self-reported demographic or identity information for the annotators, but avoid inferring this information. Instead state that this information is unknown. See [Larson 2017](https://www.aclweb.org/anthology/W17-1601.pdf) for using identity categories as a variables, particularly gender.
-
-Describe the conditions under which the data was annotated (for example, if the annotators were crowdworkers, state what platform was used, or if the data was found, what website the data was found on). If compensation was provided, include that information here. -->
+> We ask 43 annotators in total for the question-answering pairs annotation on documents.
 
 ### Personal and Sensitive Information
 
@@ -245,29 +229,21 @@ If efforts were made to anonymize the data, describe the anonymization process. 
 
 ### Social Impact of Dataset
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- Please discuss some of the ways you believe the use of this dataset will impact society.
-
-The statement should include both positive outlooks, such as outlining how technologies developed through its use may improve people's lives, and discuss the accompanying risks. These risks may range from making important decisions more opaque to people who are affected by the technology, to reinforcing existing harmful biases (whose specifics should be discussed in the next section), among other considerations.
-
-Also describe in this section if the proposed dataset contains a low-resource or under-represented language. If this is the case or if this task has any impact on underserved communities, please elaborate here. -->
+> We assume our datasets are useful for both research and development of generative language models and their applications for Japanese document question answering. 
 
 ### Discussion of Biases
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- Provide descriptions of specific biases that are likely to be reflected in the data, and state whether any steps were taken to reduce their impact.
-
-For Wikipedia text, see for example [Dinan et al 2020 on biases in Wikipedia (esp. Table 1)](https://arxiv.org/abs/2005.00614), or [Blodgett et al 2020](https://www.aclweb.org/anthology/2020.acl-main.485/) for a more general discussion of the topic.
-
-If analyses have been run quantifying these biases, please add brief summaries and links to the studies here. -->
+> We carefully avoid private documents and choose considerably public documents published by public or quasi-public sectors for the publicity of our dataset usage. All of the documents and webpages are publicly available online and we follow our institutional rules to gather them. We follow our institutional rules and also consult external advisors for data collection processes.
 
 ### Other Known Limitations
 
-[More Information Needed]
+From [JDocQA's paper](https://arxiv.org/abs/2403.19454):
 
-<!-- If studies of the datasets have outlined other limitations of the dataset, such as annotation artifacts, please outline and cite them here. -->
+> We also consider our dataset with unanswerable questions can contribute to harnessing the hallucination problem of large language models. However, this doesn’t mean that the fintuned models with unanswerable questions do not perform hallucinations at all.
 
 ## Additional Information
 
@@ -279,9 +255,9 @@ If analyses have been run quantifying these biases, please add brief summaries a
 
 ### Licensing Information
 
-[More Information Needed]
+From [JDocQA's README.md](https://github.com/mizuumi/JDocQA/blob/main/dataset/README.md):
 
-<!-- Provide the license and link to the license webpage if available. -->
+> JDocQA dataset annotations are distributed under CC BY-SA 4.0.
 
 ### Citation Information
 
