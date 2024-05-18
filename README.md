@@ -94,7 +94,13 @@ The language data in JDocQA is in Japanese ([BCP-47 ja-JP](https://www.rfc-edito
 ```python
 import datasets as ds
 
-dataset = ds.load_dataset(path=dataset_path, trust_remote_code=True)
+dataset = ds.load_dataset(
+  path="shunk031/JDocQA", 
+  # Rename to the same wording as in the paper: Document -> Report / Kouhou -> Pamphlet
+  rename_pdf_category=True,
+  # Set to True to use loading script for huggingface datasets
+  trust_remote_code=True,
+)
 
 print(dataset)
 # DatasetDict({
@@ -149,7 +155,7 @@ From [JDocQA's README.md](https://github.com/mizuumi/JDocQA/blob/main/dataset/RE
 - `context`: Removed noises from 'original_context'.
 - `multiple_select_answer`:
 - `multiple_select_question`:
-- `no_reason`: Unanswerable question-> 0, Answerable question-> 1
+- `no_reason`: Unanswerable question -> 0, Answerable question -> 1, Multi page question -> 2. They can be jointly flagged such as `1,2`.
 - `normalized_answer`:
 - `original_answer`: Annotated answers.
 - `original_context`: Extracted texts from PDF.
@@ -162,8 +168,13 @@ From [JDocQA's README.md](https://github.com/mizuumi/JDocQA/blob/main/dataset/RE
 - `reason_of_answer_bbox`:
 - `text_from_ocr_pdf`:
 - `text_from_pdf`:
-- `type_of_image`: (1) Table, (2) Bar chart, (3) Line chart, (4) Pie chart, (5) Map, (6) Other figures, (7) Mixtured writing style from left to the right and from upside to the downside, (8) Drawings, (9) Others.
+- `type_of_image`: (1) Table, (2) Bar chart, (3) Line chart, (4) Pie chart, (5) Map, (6) Other figures, (7) Mixtured writing style from left to the right and from upside to the downside, (8) Drawings, (9) Others. Note that this enrty is for statistical purpose in our paper, and some labels are missing, which are represented as `null`.
 - `pdf_filepath`: full file path to the corresponding PDF file.
+
+> ## pdf_category
+> We renamed the several category names upon the paper for the interpretability.
+> - `Document` category in the PDF set as `Report` in the paper.
+> - `Kouhou` category in the PDF set as `Pamphlet` in the paper.
 
 ### Data Splits
 

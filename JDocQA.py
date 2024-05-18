@@ -17,6 +17,7 @@
 import json
 import os
 import re
+from dataclasses import dataclass
 from typing import List
 
 import datasets as ds
@@ -57,44 +58,72 @@ _URLS = {
 }
 
 
+@dataclass
+class JDocQADatasetConfig(ds.BuilderConfig):
+    rename_pdf_category: bool = False
+
+
 class JDocQADataset(ds.GeneratorBasedBuilder):
     """A class for loading JDocQA dataset."""
 
     VERSION = ds.Version("1.0.0")
 
     BUILDER_CONFIGS = [
-        ds.BuilderConfig(
+        JDocQADatasetConfig(
             version=VERSION,
             description=_DESCRIPTION,
         ),
     ]
 
+    BUILDER_CONFIG_CLASS = JDocQADatasetConfig
+
     def _info(self) -> ds.DatasetInfo:
+        answer_type = ds.ClassLabel(
+            num_classes=4,
+            names=["yes/no", "factoid", "numerical", "open-ended"],
+        )
+        multiple_select_answer = ds.ClassLabel(
+            num_classes=4,
+            names=["A", "B", "C", "D"],
+        )
+        no_reason = ds.ClassLabel(
+            num_classes=4,
+            names=["0", "1", "2", "1,2"],
+        )
+        pdf_category = ds.ClassLabel(
+            num_classes=4,
+            names=["Report", "Pamphlet", "Slide", "Website"]
+            if self.config.rename_pdf_category  # type: ignore
+            else ["Document", "Kouhou", "Slide", "Website"],
+        )
+        type_of_image = ds.ClassLabel(
+            num_classes=10,
+            names=[
+                "null",
+                "Table",
+                "Bar chart",
+                "Line chart",
+                "Pie chart",
+                "Map",
+                "Other figures",
+                "Mixtured writing style from left to the right and from upside to the downside",
+                "Drawings",
+                "Others",
+            ],
+        )
         features = ds.Features(
             {
                 "answer": ds.Value("string"),
-                "answer_type": ds.ClassLabel(
-                    num_classes=4,
-                    names=["yes/no", "factoid", "numerical", "open-ended"],
-                ),
+                "answer_type": answer_type,
                 "context": ds.Value("string"),
-                "multiple_select_answer": ds.ClassLabel(
-                    num_classes=4,
-                    names=["A", "B", "C", "D"],
-                ),
+                "multiple_select_answer": multiple_select_answer,
                 "multiple_select_question": ds.Sequence(ds.Value("string")),
-                "no_reason": ds.ClassLabel(
-                    num_classes=4,
-                    names=["0", "1", "2", "1,2"],
-                ),
+                "no_reason": no_reason,
                 "normalized_answer": ds.Value("string"),
                 "original_answer": ds.Value("string"),
                 "original_context": ds.Value("string"),
                 "original_question": ds.Value("string"),
-                "pdf_category": ds.ClassLabel(
-                    num_classes=4,
-                    names=["Document", "Kouhou", "Slide", "Website"],
-                ),
+                "pdf_category": pdf_category,
                 "pdf_name": ds.Value("string"),
                 "question": ds.Value("string"),
                 "question_number": ds.Sequence(ds.Value("uint64")),
@@ -102,23 +131,7 @@ class JDocQADataset(ds.GeneratorBasedBuilder):
                 "reason_of_answer_bbox": ds.Sequence(ds.Value("string")),
                 "text_from_ocr_pdf": ds.Value("string"),
                 "text_from_pdf": ds.Value("string"),
-                "type_of_image": ds.Sequence(
-                    ds.ClassLabel(
-                        num_classes=10,
-                        names=[
-                            "Null",
-                            "Table",
-                            "Bar chart",
-                            "Line chart",
-                            "Pie chart",
-                            "Map",
-                            "Other figures",
-                            "Mixtured writing style from left to the right and from upside to the downside",
-                            "Drawings",
-                            "Others",
-                        ],
-                    )
-                ),
+                "type_of_image": ds.Sequence(type_of_image),
                 #
                 # `pdf_filepath` is added to the original dataset for convenience
                 "pdf_filepath": ds.Value("string"),
@@ -213,7 +226,7 @@ class JDocQADataset(ds.GeneratorBasedBuilder):
 
         def convert_to_type_of_image(type_of_image: str) -> str:
             if type_of_image == "":
-                return "Null"
+                return "null"
             elif type_of_image == "1":
                 return "Table"
             elif type_of_image == "2":
@@ -237,6 +250,21 @@ class JDocQADataset(ds.GeneratorBasedBuilder):
 
         return [convert_to_type_of_image(t) for t in types_of_image]
 
+    def _convert_pdf_category(self, pdf_category: str) -> str:
+        if not self.config.rename_pdf_category:  # type: ignore
+            return pdf_category
+
+        if pdf_category == "Document":
+            return "Report"
+        elif pdf_category == "Kouhou":
+            return "Pamphlet"
+        else:
+            assert pdf_category in (
+                "Slide",
+                "Website",
+            ), f"Unknown pdf_category: {pdf_category}"
+            return pdf_category
+
     def _get_pdf_fielpath(self, pdf_name: str, documents_dir: str) -> str:
         pdf_filepath = os.path.join(documents_dir, pdf_name)
         assert os.path.exists(pdf_filepath), f"File not found: {pdf_filepath}"
@@ -255,6 +283,9 @@ class JDocQADataset(ds.GeneratorBasedBuilder):
                     self._convert_multiple_select_question(
                         multiple_select_question=data["multiple_select_question"]
                     )
+                )
+                data["pdf_category"] = self._convert_pdf_category(
+                    pdf_category=data["pdf_category"]
                 )
                 data["question_number"] = self._convert_question_number(
                     data["question_number"]
