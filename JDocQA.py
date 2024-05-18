@@ -45,7 +45,7 @@ Japanese Document Question Answering (JDocQA), a large-scale document-based QA d
 
 _HOMEPAGE = "https://github.com/mizuumi/JDocQA"
 
-_LICENSE = "JDocQA dataset annotations are distributed under CC BY-SA 4.0."
+_LICENSE = "JDocQA dataset annotations are distributed under CC BY-SA 4.0. We are delighted to see many derivations from JDocQA! When you create any derivations, e.g., datasets, papers, etc, from JDocQA, please cite our paper accordingly. If your derivations are web-based projects, please cite our paper and include the link to this github page."
 
 _URLS = {
     "annotations": {
