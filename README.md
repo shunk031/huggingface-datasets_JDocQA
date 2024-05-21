@@ -27,6 +27,8 @@ task_ids:
 
 [![CI](https://github.com/shunk031/huggingface-datasets_JDocQA/actions/workflows/ci.yaml/badge.svg)](https://github.com/shunk031/huggingface-datasets_JDocQA/actions/workflows/ci.yaml)
 [![Sync HF](https://github.com/shunk031/huggingface-datasets_JDocQA/actions/workflows/push_to_hub.yaml/badge.svg)](https://github.com/shunk031/huggingface-datasets_JDocQA/actions/workflows/push_to_hub.yaml)
+[![LREC-COLING2024 2024.lrec-main.830](https://img.shields.io/badge/LREC--COLING2024-2024.lrec--830-red)](https://aclanthology.org/2024.lrec-main.830/)
+[![Hugging Face Datasets Hub](https://img.shields.io/badge/Hugging%20Face_🤗-Datasets-ffcc66)](https://huggingface.co/datasets/shunk031/JDocQA)
 
 ## Table of Contents
 - [Dataset Card Creation Guide](#dataset-card-creation-guide)
@@ -63,6 +65,7 @@ task_ids:
 - **Homepage:** https://github.com/mizuumi/JDocQA
 - **Repository:** https://github.com/shunk031/huggingface-datasets_JDocQA
 - **Paper (Preprint):** https://arxiv.org/abs/2403.19454
+- **Paper (LREC-COLING2014)**: https://aclanthology.org/2024.lrec-main.830/
 
 ### Dataset Summary
 
